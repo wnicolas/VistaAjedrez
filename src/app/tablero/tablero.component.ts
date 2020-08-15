@@ -7,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableroComponent implements OnInit {
 
-  jugador1:String;
-  jugador2:String;
+  player1:String;
+  player2:String;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  salvarJugadores(){
-    this.jugador1="Nicolas";
-    this.jugador2="Cristian";
-    console.log('Bienvenidos')
+  salvarJugadores(j1: String,j2: String){
+    this.player1=j1;
+    this.player2=j2;
+    alert('Bienvenidos: ' + this.player1+" y "+this.player2);
   }
 
 }

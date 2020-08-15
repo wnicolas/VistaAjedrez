@@ -1,26 +1,25 @@
 
 <h1 style="color: white; text-align: center;">Ajedrez UD</h1>
 
-<div class="container" style="align-items: center; width: 50%;">
+<div class="container" style="align-items: center; width: 50%; color: beige;">
     <form>
         <div class="form-group row">
           <label style="color: white;" for="inputEmail3" class="col-sm-2 col-form-label">Jugador 1: </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail3">
+            <input #jugador1 type="text" class="form-control" id="inputEmail3" placeholder="Nombre de jugador 1">
           </div>
         </div>
         <div class="form-group row">
-          <label style="color: white;" for="inputPassword3" class="col-sm-2 col-form-label">Jugador2</label>
+          <label style="color: white;" for="inputPassword3" class="col-sm-2 col-form-label">Jugador 2:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3">
+            <input #jugador2 type="text" class="form-control" id="inputPassword3" placeholder="Nombre de jugador 2">
           </div>
-        </div>
-        
-        
-         
+        </div>  
       </form>
       <hr>
-      <button (click)="salvarJugadores()" class="btn btn-primary">Guardar Jugadores</button>
+      <button (click)="salvarJugadores(jugador1.value,jugador2.value)" class="btn btn-primary">Guardar Jugadores</button>
+      <p>{{player1}}</p><br>
+      <p>{{player2}}</p>
 </div>
 
 
