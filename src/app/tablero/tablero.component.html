@@ -18,11 +18,12 @@
     </form>
     <button (click)="salvarJugadores(jugador1.value,jugador2.value)" class="btn btn-primary">Guardar Jugadores</button>
     <hr>  
-    <label>{{player1}} // </label>
-    <label >{{player2}}</label>
-   <!-- <div *ngIf="player1 && player2">-->
+
+   <div *ngIf="player1 && player2">
+    <label>{{player1 | uppercase}} // </label>
+    <label >{{player2 | uppercase}}</label>
       <div>
-        {{statusInicial}}
+        {{statusInicial}} //  {{statusFinal}}
         <table>
           <tr *ngFor="let nombre of columnas">
             <td *ngFor="let fila of nombre">
@@ -35,9 +36,9 @@
             </td>
           </tr>
         </table>
-        
+        <hr><br>
       </div>
-  <!--</div>-->
+  </div>
 </div>
 
 

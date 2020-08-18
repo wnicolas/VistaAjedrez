@@ -13,6 +13,7 @@ export class TableroComponent implements OnInit {
   figuraFinal:String;
 
   statusInicial="No ha iniciado la posición inicial";
+  statusFinal="No ha iniciado la posición final";
   contador=0; 
 
   //Declaracion de fichas
@@ -110,11 +111,13 @@ export class TableroComponent implements OnInit {
       
     if((this.contador)%2==0){
         this.figuraInicial=this.columnas[n][m].figura;
-        this.statusInicial="La posición inicial es: "+n+":"+m;  
+        this.statusInicial="La posición inicial es: "+n+":"+m; 
+        this.statusFinal="No ha iniciado la posición final"; 
         this.columnas[n][m]=new Casilla(n,m,this.vacia);
     }else{
-        alert("La posición final es: "+n+":"+m);
+        //alert("La posición final es: "+n+":"+m);
         this.figuraFinal=this.columnas[n][m].figura;
+        this.statusFinal="La posición final es: "+n+":"+m; 
         this.statusInicial="No ha iniciado la posición inicial";
         this.columnas[n][m].figura=this.figuraInicial;
 
