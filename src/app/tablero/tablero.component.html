@@ -2,8 +2,8 @@
 <h1 style="color: white; text-align: center;">Ajedrez UD</h1>
 
 <div class="container" style="width: 50%; color: beige;">
-    <form style="text-align: center;">
-        <div class="form-group row">
+    <form style="text-align: center;"  >
+        <div class="form-group row" >
           <label style="color: white;" for="inputEmail3" class="col-sm-2 col-form-label">Jugador 1: </label>
           <div class="col-sm-10">
             <input #jugador1 type="text" class="form-control" id="inputEmail3" placeholder="Nombre de jugador 1">
@@ -16,33 +16,28 @@
           </div>
         </div>  
     </form>
-    <hr>
     <button (click)="salvarJugadores(jugador1.value,jugador2.value)" class="btn btn-primary">Guardar Jugadores</button>
-    <p>{{player1}}</p><br>
-    <p>{{player2}}</p>
-
-    <div *ngIf="player1 && player2">
+    <hr>  
+    <label>{{player1}} // </label>
+    <label >{{player2}}</label>
+   <!-- <div *ngIf="player1 && player2">-->
       <div>
+        {{statusInicial}}
         <table>
           <tr *ngFor="let nombre of columnas">
             <td *ngFor="let fila of nombre">
               <div *ngIf="fila.rojas">
-                <button class="btn btn-light">{{fila.posi}},{{fila.posj}}</button>
+                <button (click)="coordenadas(fila.posi,fila.posj)" style="height: 50px; width: 50px; font-size: 25px;" class="btn btn-light" [innerHTML]="fila.figura"></button>
               </div>
               <div *ngIf="fila.rojas==false">
-                <button class="btn btn-dark">{{fila.posi}},{{fila.posj}}</button>
+                <button (click)="coordenadas(fila.posi,fila.posj)" style="height: 50px; width: 50px; font-size: 25px;" class="btn btn-dark" [innerHTML]="fila.figura"></button>
               </div>
-              
             </td>
-           
-            
           </tr>
         </table>
-    </div>
-    </div>
-
-    
-
+        
+      </div>
+  <!--</div>-->
 </div>
 
 

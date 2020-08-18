@@ -10,6 +10,27 @@ export class TableroComponent implements OnInit {
   player1:String;
   player2:String;
 
+  statusInicial="No ha iniciado la posición inicial";
+  contador=0; 
+
+  //Declaracion de fichas
+  rBlanca="&#9812;";
+  dBlanca="&#9813;";
+  tBlanca="&#9814;";
+  aBlanca="&#9815;";
+  cBlanca="&#9816;";
+  pBlanca="&#9817;";
+
+  rNegra="&#9818;";
+  dNegra="&#9819;";
+  tNegra="&#9820;";
+  aNegra="&#9821;";
+  cNegra="&#9822;";
+  pNegra="&#9823;";
+
+  vacia:String="";
+
+
   fila0=[];
   fila1=[];
   fila2=[];
@@ -20,15 +41,50 @@ export class TableroComponent implements OnInit {
   fila7=[];
 
   llenarTablero(){
-    for(var i=0;i<8;i++){
-      this.fila0[i]=new Casilla(0,i);
-      this.fila1[i]=new Casilla(1,i);
-      this.fila2[i]=new Casilla(2,i);
-      this.fila3[i]=new Casilla(3,i);
-      this.fila4[i]=new Casilla(4,i);
-      this.fila5[i]=new Casilla(5,i);
-      this.fila6[i]=new Casilla(6,i);
-      this.fila7[i]=new Casilla(7,i);
+    for(var j=0;j<8;j++){
+
+      switch(j){
+        case 0:
+          this.fila0[j]=new Casilla(0,j,this.tNegra);
+          this.fila7[j]=new Casilla(7,j,this.tBlanca);
+          break;
+        case 1:
+          this.fila0[j]=new Casilla(0,j,this.cNegra);
+          this.fila7[j]=new Casilla(7,j,this.cBlanca);
+          break;
+        case 2:
+          this.fila0[j]=new Casilla(0,j,this.aNegra);
+          this.fila7[j]=new Casilla(7,j,this.aBlanca);
+          break;
+        case 3:
+          this.fila0[j]=new Casilla(0,j,this.dNegra);
+          this.fila7[j]=new Casilla(7,j,this.dBlanca);
+          break;
+        case 4:
+          this.fila0[j]=new Casilla(0,j,this.rNegra);
+          this.fila7[j]=new Casilla(7,j,this.rBlanca);
+          break;
+        case 5:
+          this.fila0[j]=new Casilla(0,j,this.aNegra);
+          this.fila7[j]=new Casilla(7,j,this.aBlanca);
+          break;
+        case 6:
+          this.fila0[j]=new Casilla(0,j,this.cNegra);
+          this.fila7[j]=new Casilla(7,j,this.cBlanca);
+          break;
+        case 7:
+          this.fila0[j]=new Casilla(0,j,this.tNegra);
+          this.fila7[j]=new Casilla(7,j,this.tBlanca);
+          break;
+      }
+
+      this.fila1[j]=new Casilla(1,j,this.pNegra);
+      this.fila2[j]=new Casilla(2,j,this.vacia);
+      this.fila3[j]=new Casilla(3,j,this.vacia);
+      this.fila4[j]=new Casilla(4,j,this.vacia);
+      this.fila5[j]=new Casilla(5,j,this.vacia);
+      this.fila6[j]=new Casilla(6,j,this.pBlanca);
+      
     }
   }
   columnas=[this.fila0,this.fila1,this.fila2,this.fila3,this.fila4,this.fila5,this.fila6,this.fila7];
@@ -47,15 +103,31 @@ export class TableroComponent implements OnInit {
     alert('Bienvenidos: ' + this.player1+" y "+this.player2);
   }
 
+  coordenadas(n:number,m:number){    
+      
+    if((this.contador)%2==0){
+        //alert("La posición inicial es: "+n+":"+m);
+        this.statusInicial="La posición inicial es: "+n+":"+m;      
+    }else{
+        alert("La posición final es: "+n+":"+m);
+        this.statusInicial="No ha iniciado la posición inicial";       
+    }        
+    this.contador++;        
+  }
+
+
 }
 class Casilla{
   posi:number;
   posj: number;
   rojas:boolean;
+  figura:String;
   
-  constructor(posi:number,posj:number) { 
+  constructor(posi:number,posj:number,figura:String) { 
     this.posi=posi;
     this.posj=posj;
+    this.figura=figura;
+
     if((posi+posj)%2==0){
       this.rojas=true;
     }else{
