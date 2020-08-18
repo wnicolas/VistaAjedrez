@@ -9,6 +9,8 @@ export class TableroComponent implements OnInit {
 
   player1:String;
   player2:String;
+  figuraInicial: String;
+  figuraFinal:String;
 
   statusInicial="No ha iniciado la posición inicial";
   contador=0; 
@@ -29,7 +31,6 @@ export class TableroComponent implements OnInit {
   pNegra="&#9823;";
 
   vacia:String="";
-
 
   fila0=[];
   fila1=[];
@@ -89,12 +90,14 @@ export class TableroComponent implements OnInit {
   }
   columnas=[this.fila0,this.fila1,this.fila2,this.fila3,this.fila4,this.fila5,this.fila6,this.fila7];
   
+
   
 
   constructor() { }
 
   ngOnInit(): void {
     this.llenarTablero();
+    this.figuraFinal="";
   }
 
   salvarJugadores(j1: String,j2: String){
@@ -106,12 +109,17 @@ export class TableroComponent implements OnInit {
   coordenadas(n:number,m:number){    
       
     if((this.contador)%2==0){
-        //alert("La posición inicial es: "+n+":"+m);
-        this.statusInicial="La posición inicial es: "+n+":"+m;      
+        this.figuraInicial=this.columnas[n][m].figura;
+        this.statusInicial="La posición inicial es: "+n+":"+m;  
+        this.columnas[n][m]=new Casilla(n,m,this.vacia);
     }else{
         alert("La posición final es: "+n+":"+m);
-        this.statusInicial="No ha iniciado la posición inicial";       
-    }        
+        this.figuraFinal=this.columnas[n][m].figura;
+        this.statusInicial="No ha iniciado la posición inicial";
+        this.columnas[n][m].figura=this.figuraInicial;
+
+    }     
+
     this.contador++;        
   }
 
