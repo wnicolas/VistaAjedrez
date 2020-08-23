@@ -1,0 +1,9 @@
+<div>
+    <label>Movimiento:
+      <input [(ngModel)]="comando" placeholder="comando" (keyup.enter)="enviarComando()"/>
+    </label>
+    <button (click)="enviarComando()">Enviar</button>
+    <h2>Comando inicial: {{comando}}</h2>
+    <p id="resultado" style="font-size: 100px;">{{resultado}}</p>
+    <p>Las coordenadas son: {{coordenadas}}</p>
+</div>
