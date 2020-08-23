@@ -90,9 +90,6 @@ export class TableroComponent implements OnInit {
     }
   }
   columnas=[this.fila0,this.fila1,this.fila2,this.fila3,this.fila4,this.fila5,this.fila6,this.fila7];
-  
-
-  
 
   constructor() { }
 
@@ -105,27 +102,50 @@ export class TableroComponent implements OnInit {
     this.player1=j1;
     this.player2=j2;
     alert('Bienvenidos: ' + this.player1+" y "+this.player2);
+    
   }
+ 
+  coordenadasTablero:string="";
 
-  coordenadas(n:number,m:number){    
+  coordenadaInicialI:number;
+  coordenadaInicialJ:number;
+  coordenadaFinalI:number;
+  coordenadaFinalJ:number;
+
+  EnviarCoordenadas(n:number,m:number){    
       
-    if((this.contador)%2==0){
+    if((this.contador)%2==0){ 
+        this.coordenadasTablero="";
+        this.coordenadaInicialI=n;
+        this.coordenadaInicialJ=m;
         this.figuraInicial=this.columnas[n][m].figura;
         this.statusInicial="La posición inicial es: "+n+":"+m; 
         this.statusFinal="No ha iniciado la posición final"; 
+        this.coordenadasTablero=`${n},${m}`;
         this.columnas[n][m]=new Casilla(n,m,this.vacia);
-    }else{
-        //alert("La posición final es: "+n+":"+m);
-        this.figuraFinal=this.columnas[n][m].figura;
-        this.statusFinal="La posición final es: "+n+":"+m; 
-        this.statusInicial="No ha iniciado la posición inicial";
-        this.columnas[n][m].figura=this.figuraInicial;
+    }else{   
+        this.coordenadasTablero=`${this.coordenadasTablero},${n},${m}`;
+        this.coordenadaFinalI=n;
+        this.coordenadaFinalJ=m;
 
     }     
-
     this.contador++;        
   }
 
+  mover(validacionMovimiento:String){
+    if(validacionMovimiento=="se puede mover"){
+      this.figuraFinal=this.columnas[this.coordenadaFinalI][this.coordenadaFinalJ].figura;
+      this.statusFinal="La posición final es: "+this.coordenadaFinalI+":"+this.coordenadaFinalJ; 
+      this.statusInicial="No ha iniciado la posición inicial";
+      this.columnas[this.coordenadaFinalI][this.coordenadaFinalJ].figura=this.figuraInicial;
+
+      this.coordenadaFinalI=null;
+      this.coordenadaFinalJ=null;
+    }else{
+      alert("Movimiento inválido")
+      this.columnas[this.coordenadaInicialI][this.coordenadaInicialJ]=new Casilla(this.coordenadaInicialI,this.coordenadaInicialJ,this.figuraInicial);
+    }
+  }
 
 }
 class Casilla{

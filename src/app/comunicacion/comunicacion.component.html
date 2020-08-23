@@ -1,9 +1,9 @@
-<div>
-    <label>Movimiento:
-      <input [(ngModel)]="comando" placeholder="comando" (keyup.enter)="enviarComando()"/>
-    </label>
-    <button (click)="enviarComando()">Enviar</button>
-    <h2>Comando inicial: {{comando}}</h2>
-    <p id="resultado" style="font-size: 100px;">{{resultado}}</p>
-    <p>Las coordenadas son: {{coordenadas}}</p>
+
+
+<div class="container" style="text-align: center;">
+    <label style="color: white;" for="inputEmail3" class="col-sm-2 col-form-label">
+      Movimiento:  <input [(ngModel)]="comando" class="form-control" placeholder="comando"/>
+    </label>  
+    <button (click)="enviarComando()" class="btn btn-primary">Enviar</button>
 </div>
+

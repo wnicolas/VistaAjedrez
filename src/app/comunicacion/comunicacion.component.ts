@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ComandoService } from '../comando.service';
 
@@ -9,21 +9,26 @@ import { ComandoService } from '../comando.service';
 })
 export class ComunicacionComponent implements OnInit {
 
-  comando = "Prueba";
+  //comando = "Prueba";
   resultado = "";
   coordenadas="";
 
   constructor(private http: ComandoService) { }
 
+  @Input('coordenadasComunicacion') comando;
+  @Output() eventoComunicacion=new EventEmitter();
+
   enviarComando() {
     this.http.respuestaLlamdoServlet(this.comando).subscribe((data: any) => {
       this.resultado = data.comando;
       if (this.resultado == "true") {
-        alert(this.resultado);
-        document.getElementById("resultado").innerHTML = "&#9816;";
+
+        this.eventoComunicacion.emit("se puede mover");
+       
       } else if (this.resultado == "false") {
-        alert(this.resultado);
-        document.getElementById("resultado").innerHTML = "&#9822;";
+
+        this.eventoComunicacion.emit("no se puede mover");
+
       }else{
         alert(this.resultado);
         document.getElementById("resultado").innerHTML = this.resultado;
