@@ -1,7 +1,7 @@
 
 <h1 style="color: white; text-align: center;">Ajedrez UD</h1>
 
-<div class="container" style="width: 50%; color: beige;">
+<div class="container" style="width: 50%;">
     <form style="text-align: center;" id="fomulario">
         <div class="form-group row" >
           <label style="color: white;" for="inputEmail3" class="col-sm-2 col-form-label">Jugador 1: </label>
@@ -32,18 +32,22 @@
         <label style="color:white;">{{statusInicial}}  ||  </label>
         <label style="color:white">{{statusFinal}}</label>
           
-        <table>
+        <div class="container-fluid" style="width: 100%; text-align:center;">
+          <table> 
           <tr *ngFor="let nombre of columnas">
             <td *ngFor="let fila of nombre">
               <div *ngIf="fila.rojas">
-                <button (click)="EnviarCoordenadas(fila.posi,fila.posj)" style="height: 50px; width: 50px; font-size: 25px;" class="btn btn-light" [innerHTML]="fila.figura"></button>
+                <button (click)="EnviarCoordenadas(fila.posi,fila.posj)" style="height: 58px; width: 65px; font-size: 30px;" class="btn btn-light" [innerHTML]="fila.figura"></button>
               </div>
               <div *ngIf="fila.rojas==false">
-                <button (click)="EnviarCoordenadas(fila.posi,fila.posj)" style="height: 50px; width: 50px; font-size: 25px;" class="btn btn-dark" [innerHTML]="fila.figura"></button>
+                <button (click)="EnviarCoordenadas(fila.posi,fila.posj)" style="height: 58px; width: 65px; font-size: 30px;" class="btn btn-dark" [innerHTML]="fila.figura"></button>
               </div>
             </td>
           </tr>
         </table>
+        </div>
+
+        
       </div>
   </div>
 </div>

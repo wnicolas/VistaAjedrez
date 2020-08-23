@@ -17,19 +17,19 @@ export class TableroComponent implements OnInit {
   contador=0; 
 
   //Declaracion de fichas
-  rBlanca="&#9812;";
-  dBlanca="&#9813;";
-  tBlanca="&#9814;";
-  aBlanca="&#9815;";
-  cBlanca="&#9816;";
-  pBlanca="&#9817;";
+  rBlanca="♔";
+  dBlanca="♕";
+  tBlanca="♖";
+  aBlanca="♗";
+  cBlanca="♘";
+  pBlanca="♙";
 
-  rNegra="&#9818;";
-  dNegra="&#9819;";
-  tNegra="&#9820;";
-  aNegra="&#9821;";
-  cNegra="&#9822;";
-  pNegra="&#9823;";
+  rNegra="♚";
+  dNegra="♛";
+  tNegra="♜";
+  aNegra="♝";
+  cNegra="♞";
+  pNegra="♟";
 
   vacia:String="";
 
@@ -113,6 +113,8 @@ export class TableroComponent implements OnInit {
   coordenadaFinalJ:number;
 
   EnviarCoordenadas(n:number,m:number){    
+
+  
       
     if((this.contador)%2==0){ 
         this.coordenadasTablero="";
