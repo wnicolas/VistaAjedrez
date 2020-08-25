@@ -9,6 +9,7 @@ export class TableroComponent implements OnInit {
 
   player1:String;
   player2:String;
+  turnoBlancas:boolean=true;
   figuraInicial: String;
   figuraFinal:String;
 
@@ -114,8 +115,6 @@ export class TableroComponent implements OnInit {
 
   EnviarCoordenadas(n:number,m:number){    
 
-  
-      
     if((this.contador)%2==0){ 
         this.coordenadasTablero="";
         this.coordenadaInicialI=n;
@@ -143,6 +142,17 @@ export class TableroComponent implements OnInit {
 
       this.coordenadaFinalI=null;
       this.coordenadaFinalJ=null;
+
+      if(this.turnoBlancas){
+        this.turnoBlancas=false;
+        document.getElementById("p2").style.backgroundColor="chartreuse";
+        document.getElementById("p1").style.backgroundColor="transparent";
+      }else{
+        this.turnoBlancas=true;
+        document.getElementById("p1").style.backgroundColor="chartreuse";
+        document.getElementById("p2").style.backgroundColor="transparent";
+      }
+
     }else{
       alert("Movimiento inválido")
       this.columnas[this.coordenadaInicialI][this.coordenadaInicialJ]=new Casilla(this.coordenadaInicialI,this.coordenadaInicialJ,this.figuraInicial);

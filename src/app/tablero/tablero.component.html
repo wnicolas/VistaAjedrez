@@ -23,15 +23,12 @@
     <div *ngIf="player1 && player2">
      <table style="width: 100%;">
        <tr style="color: white; font-size: 25px;">
-         <td>{{player1 | uppercase}}</td>
-         <td>{{player2 | uppercase}}</td>
+         <td id="p1" style="text-align: center; background-color:chartreuse;">{{player1 | uppercase}} (Blancas)</td>
+         <td id="p2" style="text-align: center;">{{player2 | uppercase}} (Negras)</td>
        </tr>
      </table>
-      <div>
-        
-        <label style="color:white;">{{statusInicial}}  ||  </label>
-        <label style="color:white">{{statusFinal}}</label>
-          
+     <hr>
+      <div>  
         <div class="container-fluid" style="width: 100%; text-align:center;">
           <table> 
           <tr *ngFor="let nombre of columnas">
@@ -46,12 +43,14 @@
           </tr>
         </table>
         </div>
-
-        
+      <!--  <label style="color:white;">{{statusInicial}}  ||  </label>
+        <label style="color:white">{{statusFinal}}</label>-->
+        <app-comunicacion (eventoComunicacion)="mover($event)" [coordenadasComunicacion]="coordenadasTablero"></app-comunicacion>
       </div>
   </div>
 </div>
-<app-comunicacion (eventoComunicacion)="mover($event)" [coordenadasComunicacion]="coordenadasTablero"></app-comunicacion>
+
+
 
 
 
