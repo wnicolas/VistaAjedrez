@@ -10,6 +10,8 @@ import { ComandoService } from '../comando.service';
 export class ComunicacionComponent implements OnInit {
 
   resultado = "";
+  jaqueBlanca="";
+  jaqueNegra="";
 
   constructor(private http: ComandoService) { }
 
@@ -19,9 +21,15 @@ export class ComunicacionComponent implements OnInit {
   enviarComando() {
     this.http.respuestaLlamdoServlet(this.comando).subscribe((data: any) => {
       this.resultado = data.comando;
+      this.jaqueBlanca=data.jaqueBlanca;
+      this.jaqueNegra=data.jaqueNegra;
       if (this.resultado == "true") {
 
         this.eventoComunicacion.emit("se puede mover");
+
+        alert(this.resultado);
+        alert(this.jaqueBlanca);
+        alert(this.jaqueNegra);
        
       } else if (this.resultado == "false") {
 
