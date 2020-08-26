@@ -27,9 +27,16 @@ export class ComunicacionComponent implements OnInit {
 
         this.eventoComunicacion.emit("se puede mover");
 
-        alert(this.resultado);
-        alert(this.jaqueBlanca);
-        alert(this.jaqueNegra);
+        //alert(this.resultado);
+        if(this.jaqueBlanca=="true"){
+          alert("Rey blanco en jaque");
+        }
+
+        if(this.jaqueNegra=="true"){
+          alert("Rey negro en jaque");
+        }
+        
+        
        
       } else if (this.resultado == "false") {
 
