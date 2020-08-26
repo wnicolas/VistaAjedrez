@@ -9,9 +9,7 @@ import { ComandoService } from '../comando.service';
 })
 export class ComunicacionComponent implements OnInit {
 
-  //comando = "Prueba";
   resultado = "";
-  coordenadas="";
 
   constructor(private http: ComandoService) { }
 
@@ -29,9 +27,6 @@ export class ComunicacionComponent implements OnInit {
 
         this.eventoComunicacion.emit("no se puede mover");
 
-      }else{
-        alert(this.resultado);
-        document.getElementById("resultado").innerHTML = this.resultado;
       }
     });
 
